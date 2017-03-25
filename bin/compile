@@ -107,14 +107,14 @@ fi
 export CARGO_TARGET_DIR="$CACHE_DIR/target"
 
 if [ $RUST_SKIP_BUILD -ne 1 ]; then
-  # Build our project (into CARGO_TARGET_DIR so we have caching)
+  # Build our project (into CARGO_TARGET_DIR so we have caching) and install it.
   #
   # To debug git issues:
   #export RUST_LOG="cargo::sources::git=debug"
   # To debug compiler and linking issues, add `--verbose`.
   echo "-----> Building application using Cargo"
   cd "$BUILD_DIR"
-  cargo build --release
+  cargo install --path . --root .
 else
   echo "-----> Skipping Cargo build"
 fi
