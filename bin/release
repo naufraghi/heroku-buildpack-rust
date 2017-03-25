@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Find all the directories we might need (based on
+# heroku-buildpack-nodejs code).
+BUILD_DIR=${1:-}
+
+# Install our project in bin/
+#
+echo "-----> Installing application using Cargo"
+cd "$BUILD_DIR"
+cargo install --path . --root .
